@@ -27,8 +27,10 @@
         </style>
     </head>
     <body>
-        ${message}
+        <%@include file="../../resources/includes/functions.jsp" %>
         <%
+            disableBrowserCache(response);
+            
             SessionInfo sessionInfo = new SessionInfo();
             if (sessionInfo.redirectPage(request).isEmpty() || sessionInfo.getUserRoleId() != Role.ADMIN) {
                 response.sendRedirect("/LeadManagement/login");
@@ -119,8 +121,8 @@
                             <tr>
                                 <td>Gender: </td>
                                 <td>
-                                    <input type="radio" name="gender" value="1" checked> Male
-                                    <input type="radio" name="gender" value="0"> Female
+                                    <input type="radio" name="gender" value="true" checked> Male
+                                    <input type="radio" name="gender" value="false"> Female
                                 </td>
                             </tr>
                             <tr>
